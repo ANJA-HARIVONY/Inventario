@@ -4,13 +4,13 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Crear nuevo usuario')
+@section('title', 'Crear nuevo tipo')
 
 @section('content')
 <div class="col-xxl">
     <div class="card mb-4">
       <div class="card-header d-flex align-items-center justify-content-between">
-        <h5 class="mb-0">Crear nuevo usuario</h5>
+        <h5 class="mb-0">Crear nuevo tipo</h5>
       </div>
       @if ($errors->any())
         <div class="alert alert-danger">
@@ -22,33 +22,23 @@ $configData = Helper::appClasses();
         </div>
       @endif
       <div class="card-body">
-        <form action="{{ route('pages-users-store') }}" method="POST">
+        <form action="{{ route('types-store') }}" method="POST">
             @csrf
           <div class="row mb-3">
             <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Nombre</label>
             <div class="col-sm-10">
               <div class="input-group input-group-merge">
                 <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-user"></i></span>
-                <input type="text" name="name"class="form-control" id="basic-icon-default-fullname" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-icon-default-fullname2"/>
+                <input type="text" name="nombre"class="form-control" id="basic-icon-default-fullname" placeholder="Nombre" aria-label="Nombre" aria-describedby="basic-icon-default-fullname2"/>
               </div>
             </div>
           </div>
           <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Email</label>
+            <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Decsripcion</label>
             <div class="col-sm-10">
               <div class="input-group input-group-merge">
                 <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-                <input type="text" name="email" id="basic-icon-default-email" class="form-control" placeholder="john.doe" aria-label="usuario.nombre" aria-describedby="basic-icon-default-email2"/>
-                <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-3">
-            <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Contraseña</label>
-            <div class="col-sm-10">
-              <div class="input-group input-group-merge">
-                <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-question-mark"></i></span>
-                <input type="password" name="password" class="form-control" id="basic-icon-default-fullname" placeholder="Contraseña" aria-label="Contraseña" aria-describedby="basic-icon-default-fullname2"/>
+                <input type="text" name="descripcion" id="basic-icon-default-file" class="form-control" placeholder="descipcion" aria-label="types.decripcion" aria-describedby="basic-icon-default-file"/>
               </div>
             </div>
           </div>

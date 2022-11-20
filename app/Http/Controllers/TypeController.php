@@ -15,16 +15,18 @@ class TypeController extends Controller
     public function index()
     {
         //
+       $types = Type::all();
+        return view('content.types.types', ['types'=>$types]);
     }
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
+     *type  * @return \Illuminate\Http\Response
      */
     public function create()
     {
         //
+        return view('content.types.types-create');
     }
 
     /**
@@ -36,6 +38,14 @@ class TypeController extends Controller
     public function store(Request $request)
     {
         //
+        $validator = $request->validate([
+            'nombre' => 'required',
+          ]);
+          $type = new Type();
+          $type->name = $request->nombre;
+          $type->description = $request->descripcion;
+          $type->save();
+          return redirect()->route('types');
     }
 
     /**
@@ -55,9 +65,11 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit($type_id)
     {
         //
+        $type = Type::find($type_id);
+         return view('content.types.types-edit', ['type'=>$type]);
     }
 
     /**
@@ -67,9 +79,15 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request)
     {
         //
+        $type = Type::find($request->type_id);
+        $type->name = $request->name;
+        $type->description = $request->description;
+        $type->save();
+        return redirect()->route('types');
+
     }
 
     /**
@@ -78,8 +96,12 @@ class TypeController extends Controller
      * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy($type_id)
     {
         //
+        $type = Type::find($type_id);
+        $type->delete();
+        return redirect()->route('types');
+
     }
 }

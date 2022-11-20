@@ -4,32 +4,32 @@ $configData = Helper::appClasses();
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Usuarios')
+@section('title', 'Tipos')
 
 @section('content')
 <!-- Basic Bootstrap Table -->
 <div class="card">
-    <h5 class="card-header">Lista de Usuarios</h5>
+    <h5 class="card-header">Lista de Tipos</h5>
     <div class="table-responsive text-nowrap">
-      <a href="{{route('pages-users-create')}}" class="btn btn-primary">Crear usuario</a>
+      <a href="{{route('types-create')}}" class="btn btn-primary">Crear Tipo</a>
         <table class="table">
         <thead>
           <tr>
             <th>ID</th>
             <th>NOMBRE</th>
-            <th>Email</th>
+            <th>ACTIVO</th>
             <th>Creado en</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody class="table-border-bottom-0">
-            @foreach ($users as $user)
+            @foreach ($types as $typo)
             <tr>
-                <td>{{ $user->id}}</td>
-                <td>{{ $user->name}}</td>
-                <td>{{ $user->email}}</td>
-                <td>{{ $user->created_at}}</td>
-                <td><a href="{{route('pages-users-edit', $user->id) }}">Editar</a>  ! <a href="{{ route('pages-users-destroy', $user->id)}}"> Borrar</a></td>
+                <td>{{ $typo->id}}</td>
+                <td>{{ $typo->name}}</td>
+                <td>{{ $typo->active}}</td>
+                <td>{{ $typo->created_at}}</td>
+                <td><a href="{{route('types-edit', $typo->id) }}">Editar</a>  ! <a href="{{ route('types-destroy', $typo->id)}}"> Borrar</a></td>
             </tr>
             @endforeach
         </tbody>
