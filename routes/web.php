@@ -28,7 +28,12 @@ Route::middleware([
 $controller_path = 'App\Http\Controllers';
 
     Route::get('/', $controller_path . '\pages\HomePage@index')->name('pages-home');
-    Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');
+    //Route::get('/page-2', $controller_path . '\pages\Page2@index')->name('pages-page-2');
+    Route::get('/users',  $controller_path . '\pages\Users@index')->name('pages-users');
+    Route::get('/users/create', $controller_path . '\pages\users@create')->name('pages-users-create');
+    Route::post('/users/store', $controller_path . '\pages\users@store')->name('pages-users-store');
+    //Route::get('/users/edit/{user_id}',  $controller_path . '\pages\Users@index')->name('users.edit');
+   // Route::get('/users/destroy/{user_id}',  $controller_path . '\pages\Users@index')->name('users.destroy');
 
     
 });
